@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  ebook:
+    image: ebook:latest
+    container_name: ebook
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/app
+      - /app/node_modules

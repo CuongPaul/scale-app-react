@@ -1,0 +1,5 @@
+.app-container {
+  transform-origin: top left;
+  transform: scale(var(--proportion));
+  width: calc(100% / var(--proportion));
+}
