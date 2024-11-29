@@ -1,0 +1,19 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  padding: 20px 160px;
+  justify-content: space-between;
+
+  .header-button {
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 12px 24px;
+    background-color: #1677ff;
+
+    span {
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,7 +1,14 @@
-import "./index.css";
+import "./index.scss";
 
 const Header = () => {
-  return <div className="header-container">Header</div>;
+  return (
+    <div className="header-container">
+      <img alt="" src="/images/appota-logo.png" />
+      <div className="header-button">
+        <span>Đăng nhập</span>
+      </div>
+    </div>
+  );
 };
 
 export default Header;

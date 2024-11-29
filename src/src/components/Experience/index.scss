@@ -1,0 +1,51 @@
+.experience-container {
+  display: flex;
+  margin-top: 50px;
+  padding-top: 75px;
+  align-items: center;
+  padding-bottom: 50px;
+  flex-direction: column;
+  background-color: #f9f9f9;
+
+  .experience__title {
+    font-size: 32px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    span {
+      color: #1677ff;
+    }
+  }
+
+  .experience__sub-title {
+    margin-top: 24px;
+  }
+}
+
+.tabs-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .tab__group {
+    display: flex;
+    margin-top: 24px;
+    padding: 8px 0px;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    border: 1px solid #dedede;
+
+    .tab__item {
+      cursor: pointer;
+      margin: 0px 8px;
+      color: #666666;
+      padding: 12px 24px;
+      border-radius: 9999px;
+    }
+
+    .tab--active {
+      color: #ffffff;
+      background-color: #1677ff;
+    }
+  }
+}

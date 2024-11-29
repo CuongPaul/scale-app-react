@@ -8,20 +8,14 @@ const App = () => {
   const appRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (appRef.current) {
-        const originalWidth = 1920;
-        const { innerWidth } = window;
+    if (appRef.current) {
+      const widthbyDesign = 1920;
+      const { innerWidth } = window;
 
-        const proportion = Math.floor((innerWidth * 10) / originalWidth) / 10;
+      const proportion = Math.floor((innerWidth * 10) / widthbyDesign) / 10;
 
-        appRef.current.style.setProperty("--proportion", `${proportion}`);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
+      appRef.current.style.setProperty("--proportion", `${proportion}`);
+    }
   }, []);
 
   return (

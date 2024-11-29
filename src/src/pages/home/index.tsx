@@ -1,6 +1,16 @@
-import { Hero, Header, Layout } from "../../components";
+import {
+  Hero,
+  Footer,
+  Header,
+  Layout,
+  Review,
+  Example,
+  Feature,
+  Question,
+  Experience,
+} from "../../components";
 
-import "./index.css";
+import "./index.scss";
 
 const Home = () => {
   return (
@@ -8,6 +18,12 @@ const Home = () => {
       <div className="home-container">
         <Header />
         <Hero />
+        <Experience />
+        <Example />
+        <Feature />
+        <Question />
+        <Review />
+        <Footer />
       </div>
     </Layout>
   );
