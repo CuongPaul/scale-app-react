@@ -30,7 +30,6 @@ import {
   ProConfigProvider,
 } from "@ant-design/pro-components";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import type { ProSettings } from "@ant-design/pro-components";
 
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
@@ -232,8 +231,6 @@ const SearchInput = () => {
 };
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const navigate = useNavigate();
-
   const [num, setNum] = useState(40);
   const [pathname, setPathname] = useState("/list/sub-page/sub-sub-page1");
   const [settings, setSetting] = useState<Partial<ProSettings> | undefined>({
@@ -410,7 +407,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                           label: "退出登录",
                           icon: <LogoutOutlined />,
                           onClick: () => {
-                            navigate("/");
+                            window.location.href = "/";
                             localStorage.removeItem("accessToken");
                           },
                         },

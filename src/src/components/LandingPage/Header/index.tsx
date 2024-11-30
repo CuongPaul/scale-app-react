@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router-dom";
-
 import "./index.scss";
 
 const Header = () => {
-  const navigate = useNavigate();
-
   const handleClickSignIn = () => {
-    navigate("/home");
+    window.location.href = "/home";
     localStorage.setItem("accessToken", "abc123");
   };
 
