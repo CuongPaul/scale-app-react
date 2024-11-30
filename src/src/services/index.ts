@@ -24,22 +24,22 @@ const apiClient = async ({
   method = "GET",
   allowRefresh = true,
 }: RequestOptions) => {
-  const token = localStorage.getItem("accessToken");
-
-  const options: any = {
-    method,
-    url: endpoint,
-    timeout: 60 * 1000,
-    withCredentials: true,
-    baseURL: baseURL || process.env.REACT_APP_API_BASE_URL,
-    headers: headers || { "Content-Type": "application/json" },
-  };
-
-  if (body) options.data = body;
-  if (query) options.params = query;
-  if (token) options.headers = { ...options.headers, Authorization: token };
-
   try {
+    const token = localStorage.getItem("accessToken");
+
+    const options: any = {
+      method,
+      url: endpoint,
+      timeout: 60 * 1000,
+      withCredentials: true,
+      baseURL: baseURL || process.env.REACT_APP_API_BASE_URL,
+      headers: headers || { "Content-Type": "application/json" },
+    };
+
+    if (body) options.data = body;
+    if (query) options.params = query;
+    if (token) options.headers = { ...options.headers, Authorization: token };
+
     const { data } = await axios(options);
 
     return data;
@@ -59,6 +59,7 @@ const apiClient = async ({
           baseURL,
           headers,
           endpoint,
+          allowRefresh: false,
         });
 
         return { data };

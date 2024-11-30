@@ -1,32 +1,13 @@
-import {
-  Hero,
-  Footer,
-  Header,
-  Layout,
-  Review,
-  Example,
-  Feature,
-  Question,
-  Experience,
-} from "../../components";
+import { Layout } from "../../components";
 
 import "./index.scss";
 
-const Home = () => {
+const Signin = () => {
   return (
     <Layout>
-      <div className="home-container">
-        <Header />
-        <Hero />
-        <Experience />
-        <Example />
-        <Feature />
-        <Question />
-        <Review />
-        <Footer />
-      </div>
+      <div className="home-container"></div>
     </Layout>
   );
 };
 
-export default Home;
+export default Signin;
