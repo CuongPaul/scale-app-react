@@ -3,7 +3,7 @@ import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import { AppContext } from "./contexts";
 import { PrivateRoute } from "./components";
-import { Home, Signin, NotFound } from "./pages";
+import { Home, SignIn, NotFound } from "./pages";
 import { AccountReducer, initialAccountState } from "./contexts/account";
 
 const App = () => {
@@ -33,7 +33,7 @@ const App = () => {
           </Route>
           <Route
             path="/"
-            element={token ? <Navigate to="/home" /> : <Signin />}
+            element={token ? <Navigate to="/home" /> : <SignIn />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

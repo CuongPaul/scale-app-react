@@ -1,8 +1,9 @@
+import { useRef, useEffect } from "react";
+
 import {
   Hero,
   Footer,
   Header,
-  Layout,
   Review,
   Example,
   Feature,
@@ -12,21 +13,32 @@ import {
 
 import "./index.scss";
 
-const Signin = () => {
+const SignIn = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const widthByDesign = 1920;
+      const { innerWidth } = window;
+
+      const proportion = Math.floor((innerWidth * 10) / widthByDesign) / 10;
+
+      containerRef.current.style.setProperty("--proportion", `${proportion}`);
+    }
+  }, []);
+
   return (
-    <Layout>
-      <div className="signin-container">
-        <Header />
-        <Hero />
-        <Experience />
-        <Example />
-        <Feature />
-        <Question />
-        <Review />
-        <Footer />
-      </div>
-    </Layout>
+    <div ref={containerRef} className="signin-container">
+      <Header />
+      <Hero />
+      <Experience />
+      <Example />
+      <Feature />
+      <Question />
+      <Review />
+      <Footer />
+    </div>
   );
 };
 
-export default Signin;
+export default SignIn;

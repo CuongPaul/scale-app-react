@@ -1,5 +1,7 @@
 import React from "react";
+import { ConfigProvider } from "antd";
 import ReactDOM from "react-dom/client";
+import en_US from "antd/es/locale/en_US";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -14,10 +16,12 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={new QueryClient()}>
-      <App />
-      <ToastContainer autoClose={5000} hideProgressBar={true} />
-    </QueryClientProvider>
+    <ConfigProvider locale={en_US}>
+      <QueryClientProvider client={new QueryClient()}>
+        <App />
+        <ToastContainer autoClose={5000} hideProgressBar={true} />
+      </QueryClientProvider>
+    </ConfigProvider>
   </React.StrictMode>
 );
 

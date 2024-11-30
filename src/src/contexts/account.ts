@@ -4,12 +4,14 @@ interface IAccountState {
   id: string;
   name: string;
   email: string;
+  avatar: string;
 }
 
 const initialAccountState: IAccountState = {
   id: "",
   name: "",
   email: "",
+  avatar: "",
 };
 
 export enum ACCOUNT_ACTION {

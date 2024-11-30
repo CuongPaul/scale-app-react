@@ -1,5 +1,5 @@
 import Home from "./home";
-import Signin from "./signin";
+import SignIn from "./signIn";
 import NotFound from "./not-found";
 
-export { Home, Signin, NotFound };
+export { Home, SignIn, NotFound };

@@ -2,12 +2,12 @@ import { Layout } from "../../components";
 
 import "./index.scss";
 
-const Signin = () => {
+const Home = () => {
   return (
     <Layout>
-      <div className="home-container"></div>
+      <div className="home-container">Home</div>
     </Layout>
   );
 };
 
-export default Signin;
+export default Home;

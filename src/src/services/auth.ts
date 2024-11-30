@@ -1,5 +1,13 @@
 import apiClient from ".";
 
+const signOut = async () => {
+  const { data } = await apiClient({ method: "POST", endpoint: "sign-out" });
+
+  localStorage.removeItem("accessToken");
+
+  return data;
+};
+
 const refreshAccessToken = async () => {
   try {
     const { data } = await apiClient({
@@ -19,4 +27,4 @@ const refreshAccessToken = async () => {
   }
 };
 
-export { refreshAccessToken };
+export { signOut, refreshAccessToken };
