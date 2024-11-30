@@ -1,11 +1,20 @@
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect, useReducer } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import "./App.css";
 import { Home } from "./pages";
+import { AppContext } from "./contexts";
+import { AccountReducer, initialAccountState } from "./contexts/account";
 
 const App = () => {
   const appRef = useRef<HTMLDivElement>(null);
+
+  const [accountState, accountDispatch] = useReducer(
+    AccountReducer,
+    initialAccountState
+  );
+
+  const [isGlobalLoading, setIsGlobalLoading] = useState(false);
 
   useEffect(() => {
     if (appRef.current) {
@@ -19,13 +28,23 @@ const App = () => {
   }, []);
 
   return (
-    <div ref={appRef} className="app-container">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <AppContext.Provider
+      value={{
+        accountState,
+        accountDispatch,
+
+        isGlobalLoading,
+        setIsGlobalLoading,
+      }}
+    >
+      <div ref={appRef} className="app-container">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AppContext.Provider>
   );
 };
 

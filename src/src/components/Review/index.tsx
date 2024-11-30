@@ -77,8 +77,8 @@ const Review = () => {
                 <div className="item__star">
                   {Array(item.starNumber)
                     .fill(0)
-                    .map(() => (
-                      <img alt="" src="/images/star-icon.svg" />
+                    .map((_, index) => (
+                      <img key={index} alt="" src="/images/star-icon.svg" />
                     ))}
                 </div>
                 <div className="item__message">{item.message}</div>
