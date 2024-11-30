@@ -63,9 +63,9 @@ const apiClient = async ({
         });
 
         return { data };
+      } else {
+        message = err.response.data.message;
       }
-
-      message = err.response.data.message;
     } else {
       if (err.request) message = "Can't send request to server";
     }
