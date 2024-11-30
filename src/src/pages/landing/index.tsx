@@ -1,19 +1,13 @@
 import { useRef, useEffect } from "react";
 
-import {
-  Hero,
-  Footer,
-  Header,
-  Review,
-  Example,
-  Feature,
-  Question,
-  Experience,
-} from "../../components";
+import { LandingPage } from "../../components";
 
 import "./index.scss";
 
-const SignIn = () => {
+const { Hero, Footer, Header, Review, Example, Feature, Question, Experience } =
+  LandingPage;
+
+const Landing = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +22,7 @@ const SignIn = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="signin-container">
+    <div ref={containerRef} className="landing-container">
       <Header />
       <Hero />
       <Experience />
@@ -41,4 +35,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Landing;
