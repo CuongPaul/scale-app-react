@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
 
 import "./index.scss";
 import { AppContext } from "../../contexts";
@@ -9,15 +9,31 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
+  const appRef = useRef<HTMLDivElement>(null);
   const { accountDispatch } = useContext(AppContext);
 
   useEffect(() => {
-    const profile = { id: "123", name: "Nguyễn Văn A", email: "anv@gmail.com" };
+    if (appRef.current) {
+      const widthbyDesign = 1920;
+      const { innerWidth } = window;
 
-    accountDispatch({ payload: profile, type: ACCOUNT_ACTION.UPDATE });
+      const proportion = Math.floor((innerWidth * 10) / widthbyDesign) / 10;
+
+      appRef.current.style.setProperty("--proportion", `${proportion}`);
+    }
+  }, []);
+
+  useEffect(() => {
+    const account = { id: "123", name: "Nguyễn Văn A", email: "anv@gmail.com" };
+
+    accountDispatch({ payload: account, type: ACCOUNT_ACTION.UPDATE });
   }, [accountDispatch]);
 
-  return <div className="layout-container"> {children}</div>;
+  return (
+    <div ref={appRef} className="layout-container">
+      {children}
+    </div>
+  );
 };
 
 export default Layout;

@@ -7,6 +7,7 @@ import Example from "./Example";
 import Feature from "./Feature";
 import Question from "./Question";
 import Experience from "./Experience";
+import PrivateRoute from "./PrivateRoute";
 
 export {
   Hero,
@@ -18,4 +19,5 @@ export {
   Feature,
   Question,
   Experience,
+  PrivateRoute,
 };
