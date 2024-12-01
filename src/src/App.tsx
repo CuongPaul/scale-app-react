@@ -1,9 +1,16 @@
 import { useState, useReducer } from "react";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
+import {
+  Home,
+  Account,
+  Product,
+  Category,
+  NotFound,
+  LandingPage,
+} from "./pages";
 import { AppContext } from "./contexts";
 import { Layout, PrivateRoute } from "./components";
-import { Home, Product, Category, NotFound, LandingPage } from "./pages";
 import { AccountReducer, initialAccountState } from "./contexts/account";
 
 const App = () => {
@@ -31,6 +38,7 @@ const App = () => {
           <Route element={<PrivateRoute />}>
             <Route element={<Layout />}>
               <Route path="/home" element={<Home />} />
+              <Route path="/account" element={<Account />} />
               <Route path="/product" element={<Product />} />
               <Route path="/category" element={<Category />} />
             </Route>

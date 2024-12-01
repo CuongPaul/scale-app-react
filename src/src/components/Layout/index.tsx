@@ -5,9 +5,9 @@ import {
   DashboardOutlined,
 } from "@ant-design/icons";
 import { Dropdown } from "antd";
+import { useEffect, useContext } from "react";
 import { ProLayout } from "@ant-design/pro-components";
-import { useState, useEffect, useContext } from "react";
-import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 import { AppContext } from "../../contexts";
 import { signOut } from "../../services/auth";
@@ -15,18 +15,13 @@ import { ACCOUNT_ACTION } from "../../contexts/account";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { accountState, accountDispatch } = useContext(AppContext);
-
-  const [pathname, setPathname] = useState(location.pathname);
 
   useEffect(() => {
     const account = {
       id: "annv",
       name: "Nguyen Van An",
       email: "annv@gmail.com",
-      avatar:
-        "https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg",
     };
 
     accountDispatch({ payload: account, type: ACCOUNT_ACTION.UPDATE });
@@ -37,18 +32,7 @@ const Layout = () => {
       <ProLayout
         layout="mix"
         title="Ebook"
-        location={{ pathname }}
         style={{ minHeight: "100vh" }}
-        menuItemRender={(item, dom) => (
-          <div
-            onClick={() => {
-              navigate(item.path ?? "");
-              setPathname(item.path ?? "");
-            }}
-          >
-            {dom}
-          </div>
-        )}
         logo={`${window.location.origin}/images/ebook-icon.png`}
         route={{
           routes: [
@@ -68,8 +52,10 @@ const Layout = () => {
             },
           ],
         }}
+        menuItemRender={(item, dom) => (
+          <div onClick={() => navigate(item.path ?? "")}>{dom}</div>
+        )}
         avatarProps={{
-          src: accountState.avatar,
           title: accountState.name,
           render: (_props: any, dom: any) => {
             return (
@@ -79,7 +65,7 @@ const Layout = () => {
                     {
                       key: "account",
                       icon: <UserOutlined />,
-                      label: <Link to="/account/overview">Account</Link>,
+                      label: <Link to="/account">Account</Link>,
                     },
                     {
                       type: "divider",
@@ -98,6 +84,7 @@ const Layout = () => {
               </Dropdown>
             );
           },
+          src: `${process.env.REACT_APP_FILE_BASE_URL}/${accountState.avatar}`,
         }}
         bgLayoutImgList={[
           {

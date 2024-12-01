@@ -1,6 +1,6 @@
 import { TAction } from ".";
 
-interface IAccountState {
+export interface IAccountState {
   id: string;
   name: string;
   email: string;
