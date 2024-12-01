@@ -3,6 +3,7 @@ import apiClient from ".";
 const signOut = async () => {
   const { data } = await apiClient({ method: "POST", endpoint: "sign-out" });
 
+  window.location.href = "/";
   localStorage.removeItem("accessToken");
 
   return data;

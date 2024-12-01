@@ -2,12 +2,12 @@ import { useState, useReducer } from "react";
 import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 
 import { AppContext } from "./contexts";
-import { PrivateRoute } from "./components";
-import { Home, Landing, NotFound } from "./pages";
+import { Layout, PrivateRoute } from "./components";
+import { Home, Product, Category, NotFound, LandingPage } from "./pages";
 import { AccountReducer, initialAccountState } from "./contexts/account";
 
 const App = () => {
-  const token = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem("accessToken");
 
   const [accountState, accountDispatch] = useReducer(
     AccountReducer,
@@ -29,11 +29,15 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route element={<PrivateRoute />}>
-            <Route path="/home" element={<Home />} />
+            <Route element={<Layout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/category" element={<Category />} />
+            </Route>
           </Route>
           <Route
             path="/"
-            element={token ? <Navigate to="/home" /> : <Landing />}
+            element={accessToken ? <Navigate to="/home" /> : <LandingPage />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

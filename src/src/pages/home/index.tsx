@@ -1,12 +1,12 @@
-import { Layout } from "../../components";
-
 import "./index.scss";
 
 const Home = () => {
   return (
-    <Layout>
-      <div className="home-container">Home</div>
-    </Layout>
+    <div className="home-container">
+      <h1 data-heading="HOME">
+        <span data-heading="HOME">HOME</span>
+      </h1>
+    </div>
   );
 };
 
